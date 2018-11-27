@@ -1,0 +1,99 @@
+
+body {
+    background-color: #eee;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+@supports (display: grid) {
+
+.gridwrapper {
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-gap: 1px;
+    grid-template-columns: 2fr 2fr 1fr;
+    grid-template-rows: 10rem 2.75rem 2.75rem 10rem auto 2.75rem;
+}
+
+.gridItems {
+    background-color: steelblue;
+}
+
+header {
+    grid-column: 1 / 4;
+    grid-row: 1 / 4;
+    height: unset;
+    background-image: url('banner.jpg');
+    background-size: cover;
+}
+
+footer{
+    display: grid;
+    grid-auto-flow: column;
+    align-content: space-between;
+    position: static;
+    grid-column: 1 / 4;
+    grid-row: 6 / 7;  
+}
+
+nav {
+    grid-area: auto;
+    display: grid;
+    grid-auto-flow: column;
+    align-content: space-evenly;
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+    color: white;
+    padding: 0 0.75rem 0 0.75rem;
+}
+
+.LastItem {
+    margin-left: auto;
+}
+
+.foco {
+    grid-column: 1 / 3;
+    grid-row: 4 / 5;
+}
+
+.ultimas {
+    width: 100%;
+    grid-column: 1 / 2;
+    grid-row: 5 / 6;
+   
+}
+
+.agenda {
+    width: 100%;
+    grid-column: 2 / 3;
+    grid-row: 5 / 6;
+}
+
+.links {
+    grid-column: 3 / 4;
+    grid-row: 4 / 6;
+    width: 100%;
+
+}
+
+section>.p1 {
+    margin-top: 75px;
+    margin-left: 485px;    
+}
+
+section>.p2 {
+    margin-top: 350px;
+    margin-left: 100px;    
+}
+
+section>.p3 {
+    margin-top: 275px;
+    margin-left: 225px;    
+}
+
+button {
+    width:75%;
+}
+}
