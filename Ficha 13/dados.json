@@ -1,0 +1,74 @@
+[
+    {
+       "obs": "One dozen wings, come in hot or bbq flavour.",
+       "prato": "Chicken Wings",
+       "tipo": "appetizer",
+       "total": 7
+    },
+    {
+       "obs": "Delicious pan fried bread with olive oil.",
+       "prato": "Garlic Bread",
+       "tipo": "appetizer",
+       "total": 3
+    },
+    {
+       "obs": "Great for sharing with friends. Tons of cheese and all the toppings.",
+       "prato": "Nachos",
+       "tipo": "appetizer",
+       "total": 14
+    },
+    {
+       "obs": "Crisp tortilla chips and dip.",
+       "prato": "Chips &amp; Salsa",
+       "tipo": "appetizer",
+       "total": 6
+    },
+    {
+       "obs": "Servied with garlic mayo for dipping.",
+       "prato": "Yam Fries",
+       "tipo": "appetizer",
+       "total": 5
+    },
+    {
+       "obs": "A great healthy start to your meal.",
+       "prato": "Green Salad",
+       "tipo": "appetizer",
+       "total": 9
+    },
+    {
+       "obs": "Tomatoes, lettuce, cheese, salsa.",
+       "prato": "Veggie",
+       "tipo": "appetizer",
+       "total": 12
+    },
+    {
+       "obs": "Turkey, lettuce, cranberry, cheese, tomato.",
+       "prato": "Turkey",
+       "tipo":  "appetizer",
+       "total": 14
+    },
+    {
+       "obs": "Roast beef, mustard, pickles.",
+       "prato": "Roast Beef",
+       "tipo": "appetizer",
+       "total": 14
+    },
+    {
+       "obs": "Tomatoes, lettuce, cheese, pickles",
+       "prato": "Beef",
+       "tipo": "appetizer",
+       "total": 16
+    },
+    {
+       "obs": "IGREDIENTES NATURAIS DA MADEIRA",
+       "prato": "PONCHA",
+       "tipo": "appetizer",
+       "total": 16
+    },
+    {
+       "obs": "Tofu, mushrooms, salsa",
+       "prato": "BOLO DO CACO",
+       "tipo": "appetizer",
+       "total": 14
+    }
+   ]
