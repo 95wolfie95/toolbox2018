@@ -8,4 +8,4 @@ As pastas com nome seguido de _ são as que não estão completas.
 
 |15| -> NÃO FEITA
 
-|16|17|18|19|20|21|22|23|24|25|26|27| -> later
+|16|17|18|19|20|21|22|23|24|25|26|27| -> DEPOIS
