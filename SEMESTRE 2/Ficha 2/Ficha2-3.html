@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ficha2-3</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <h2 contenteditable="true" draggable="true">Lista de tarefas</h2>
+        <input type="text" placeholder="Insira uma nova tarefa" v-model="novaTarefa" @keyup.enter="insereTarefa()">
+        <button @click="insereTarefa()">Inserir</button>
+        <button @click="toggleEdit()">Editar</button>
+        <ul v-if="!edit">
+            <li v-for="item in tarefas" :class="{realizada: item.realizada, prioritario: item.prioritario}"
+                @click="realizaTarefa(item)">
+                {{ item.nome }}
+            </li>
+        </ul>
+        <ul v-if="edit">
+            <li v-for="item in tarefas" :class="{realizada: item.realizada, prioritario: item.prioritario}">
+                <input type="text" v-model="item.nome">
+                <input type="checkbox" v-model="item.prioritario">
+                <input type="checkbox" v-model="item.realizada">
+            </li>
+        </ul>
+        <hr>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                novaTarefa: '',
+                edit: false,
+                tarefas: [{
+                    nome: 'Exercícios de HTML e CSS',
+                    prioritario: false,
+                    realizada: false
+                }, {
+                    nome: 'Exercícios de JavaScript',
+                    prioritario: false,
+                    realizada: false
+                }, {
+                    nome: 'Exercícios de VueJS',
+                    prioritario: false,
+                    realizada: false
+                }, {
+                    nome: 'Exercícios de Angular',
+                    prioritario: false,
+                    realizada: false
+                }]
+            },
+            methods: {
+                realizaTarefa: function (item) {
+                    item.realizada = true
+                    item.prioritario = false
+                },
+                toggleEdit: function () {
+                    this.edit = !this.edit
+                    // console.log(this.edit)
+                },
+                insereTarefa: function () {
+                    if (!!this.novaTarefa) {
+                        // above = if (this.novaTarefa) {
+                        this.tarefas.push({
+                            nome: this.novaTarefa,
+                            prioritario: false,
+                            realizada: false,
+                        })
+                        this.novaTarefa = '';
+                    }
+                }
+            }
+        })
+    </script>
+
+    <style>
+        .realizada {
+            text-decoration: line-through;
+            color: grey;
+        }
+
+        .prioritario {
+            color: red;
+        }
+    </style>
+
+
+</body>
+
+</html>

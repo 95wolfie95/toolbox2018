@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercicio1-2</title>
+</head>
+
+<body>
+
+    <div id="ex1">
+        <h1>Exercícios (1)</h1>
+        <hr>
+
+        <h2><b>Exercício 1 : Aprovado ou Reprovado</b></h2>
+
+        Nota Teórica: <input name="name" v-model.number="grade1" type="text" style="width:15px;">
+        <br>
+        Nota Prática: <input name="name" v-model.number="grade2" type="text" style="width:15px; margin-left: 3.5px;">
+        <br>
+        <button @click="grader()" style="margin-top: 10px;">Calcular</button>
+        <button @click="hider('demo1')" style="margin-top: 10px;">Ocultar</button>
+        <!-- <p v-if="grade >= 10">Média final de {{grade}}, ou seja, o aluno está aprovado.</p>
+        <p v-else>Média final de {{grade}}, ou seja, o aluno está reprovado.</p> -->
+
+        <hr>
+        <p id="demo1">Média final de <b>{{grade}}</b>, ou seja, o aluno está
+            <b>{{ grade>=10?'aprovado.':'reprovado.' }}</b></p>
+        <hr>
+
+
+        <h2><b>Exercício 2 : Mês em extenso</b></h2>
+
+        Mês: <input name="name" v-model.number="mono2" type="text" style="width:15px;">
+        <br>
+        <button @click="month()" style="margin-top: 10px;">Mostrar</button>
+        <button @click="hider('demo2')" style="margin-top: 10px;">Ocultar</button>
+
+        <hr>
+        <p id="demo2">{{mono}}</p>
+        <hr>
+
+
+        <h2><b>Exercício 3 : 2 números e 1 operação</b></h2>
+
+        Número 1: <input name="name" v-model.number="num1" type="text" style="width:15px;">
+        <br>
+        Número 2: <input name="name" v-model.number="num2" type="text" style="width:15px;">
+        <br>
+        <button @click="operations()" style="margin-top: 10px;">Calcular</button>
+        <button @click="hider('demo3')" style="margin-top: 10px;">Ocultar</button>
+
+        <hr>
+        <p id="demo3">{{result}}</p>
+        <hr>
+
+
+        <h2><b>Exercício 4 : Múltiplos de 5 menores que 20</b></h2>
+
+        <button @click="multiples()" style="margin-top: 10px;">Mostrar</button>
+        <button @click="hider('demo4')" style="margin-top: 10px;">Ocultar</button>
+
+        <hr>
+        <p id="demo4">Múltiplos: {{multiplos}}</p>
+        <hr>
+
+
+        <h2><b>Exercício 5 : Soma dos primeiros 100 números inteiros</b></h2>
+
+        <button @click="somatory()" style="margin-top: 10px;">Mostrar</button>
+        <button @click="hider('demo5')" style="margin-top: 10px;">Ocultar</button>
+
+        <hr>
+        <p id="demo5">Soma total: {{sum}}</p>
+        <hr>
+
+
+        <h2><b>Exercício 6 : Factorial de um número</b></h2>
+
+        Número escolhido: <input name="name" v-model.number="factor1" type="text"
+            style="width:15px; margin-left: 3.5px;">
+        <br>
+        <button @click="factorial()" style="margin-top: 10px;">Mostrar</button>
+        <button @click="hider('demo6')" style="margin-top: 10px;">Ocultar</button>
+
+        <hr>
+        <p id="demo6">Factorial: {{factor2}}</p>
+        <hr>
+
+
+        <h2><b>Exercício 7 : Máximo, mínimo e média</b></h2>
+
+        Sequência escolhida: ([ ]) <input name="name" v-model="list" type="text"
+            style="width:75px; margin-left: 3.5px;">
+        <br>
+        <button @click="maxminmed()" style="margin-top: 10px;">Calcular</button>
+        <button @click="hider('demo7')" style="margin-top: 10px;">Ocultar</button>
+
+        <hr>
+        <p id="demo7">Máximo: {{max}} | Mínimo: {{min}} | Média: {{medt}}</p>
+        
+
+        <hr>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
+
+    <script>
+
+        var aplicacao = new Vue({
+            el: '#ex1',
+            data: {
+                grade: 0,
+                grade1: 0,
+                grade2: 0,
+                mono: "",
+                mono2: 0,
+                months: {
+                    1: "Janeiro", 2: "Fevereiro", 3: "Março", 4: "Abril", 5: "Maio", 6: "Junho",
+                    7: "Julho", 8: "Agosto", 9: "Setembro", 10: "Outubro", 11: "Novembro", 12: "Dezembro"
+                },
+                num1: 0,
+                num2: 0,
+                result: 0,
+                multiplos: [],
+                i: 1,
+                sum: 0,
+                factor1: 0,
+                factor2: 0,
+                list: "",
+                max: 0,
+                min: 10,
+                meds: 0,
+                medm: 0,
+                medt: 0,
+            },
+            methods: {
+                hider: function (id) {
+                    document.getElementById(id).innerHTML = "";
+                },
+                grader: function () {
+                    this.grade = (this.grade1 + this.grade2) / 2;
+                },
+                month: function () {
+                    this.mono = this.months[this.mono2];
+                },
+                operations: function () {
+                    this.result = "Soma: " + (this.num1 + this.num2) + " |";
+                    this.result += "| Diferença: " + (this.num1 - this.num2) + " |";
+                    this.result += "| Produto: " + (this.num1 * this.num2) + " |";
+                    this.result += "| Divisão: " + (this.num1 / this.num2) + " |";
+                    this.result += "| Elevação: " + (this.num1 ** this.num2);
+                },
+                multiples: function () {
+                    while ((5 * this.i) < 20) {
+                        this.multiplos.push(this.i);
+                        this.i++;
+                    }
+                },
+                somatory: function () {
+                    for (j = 1; j <= 100; j++) {
+                        this.sum += j;
+                    }
+                },
+                factorial: function () {
+                    this.factor2 = 1;
+                    if (this.factor1 == 1) {
+                        this.factor2 = 1;
+                    } else {
+                        while ((this.factor1) > 1) {
+                            this.factor2 *= this.factor1;
+                            this.factor1--;
+                        }
+                    }
+                },
+                maxminmed: function () {
+                    for (k = 1; k < this.list.length; k += 2) {
+                        if (this.list[k] > this.max) {
+                            this.max = this.list[k];
+                        }
+                    }
+                    for (l = 1; l < this.list.length; l += 2) {
+                        if (this.list[l] < this.min) {
+                            this.min = this.list[l];
+                        }
+                    }
+                    for (m = 1; m < this.list.length; m += 2) {
+                        this.meds += Number(this.list[m]);
+                        this.medm ++;
+                    }
+                    this.medt = this.meds / this.medm;
+                },
+            }
+        })
+    </script>
+
+    <script>
+        function hide(id) {
+            document.getElementById(id).innerHTML = "";
+        }
+    </script>
+
+</body>
+
+</html>

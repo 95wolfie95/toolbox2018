@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ficha17</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
+    <link rel="stylesheet" href="foundation.min.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <section class="row">
+            <div class="small-6 columns">
+                <h1 class="text-center">YOU</h1>
+                <div class="healthbar">
+                    <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;"
+                        :style="{width: playerHealth + '%'}">
+                        {{ playerHealth }}
+                    </div>
+                </div>
+            </div>
+            <div class="small-6 columns">
+                <h1 class="text-center">MONSTER</h1>
+                <div class="healthbar">
+                    <div class="healthbar text-center" style="background-color: green; margin: 0; color: white;"
+                        :style="{width: monsterHealth + '%'}">
+                        {{ monsterHealth }}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="row controls" v-if="!gameIsRunning">
+            <div class="small-12 columns">
+                <button id="start-game" @click="startGame">START NEW GAME</button>
+            </div>
+        </section>
+        <section class="row controls">
+            <div class="small-12 columns">
+                <button id="attack" @click="playerattack">ATTACK</button>
+                <button id="special-attack" @click="specialplayerAttack">SPECIAL ATTACK</button>
+                <button id="heal" @click="healplayer">HEAL</button>
+                <button id="give-up" @click="giveUp">GIVE UP</button>
+            </div>
+        </section>
+        <section class="row log" v-if="turns.length > 0">
+            <div class="small-12 columns">
+                <ul>
+                    <transition-group name="fade" appear>
+
+                        <li v-for="(turn,id) in turns"
+                            :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer}" :key="turn.id">
+                            {{ turn.text }}
+                        </li>
+
+                    </transition-group>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <style>
+        .fade-enter-active {
+            transition: opacity 1s;
+        }
+
+        .fade-enter {
+            opacity: 0;
+        }
+    </style>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                playerHealth: 100,
+                monsterHealth: 100,
+                gameIsRunning: false,
+                turns: [],
+                id: 0
+            },
+            methods: {
+                startGame: function () {
+                    this.gameIsRunning = true;
+                    this.playerHealth = 100;
+                    this.monsterHealth = 100;
+                    this.turns = [];
+                },
+                calculateDamage: function (min, max) {
+                    var damage = Math.max(Math.floor(Math.random() * max) + 1, min);
+                    return damage;
+                },
+                calculateHealth: function (min, max) {
+                    var health = Math.max(Math.floor(Math.random() * max) + 1, min);
+                    return health;
+                },
+                playerattack: function () {
+                    this.id++
+                    var damage = this.calculateDamage(3, 10);
+                    this.monsterHealth -= damage;
+                    this.turns.unshift({
+                        isPlayer: true,
+                        text: 'Player hits Monster for ' + damage + ' points.',
+                        id: this.id
+                    });
+                    if (this.monsterHealth <= 0) {
+                        this.monsterHealth = 0;
+                        alert("You won. You defeated the beast!");
+                        this.gameIsRunning = false;
+                        return;
+                    }
+                    setTimeout(this.monsterattack, 500);
+                },
+                monsterattack: function () {
+                    this.id++
+                    var damage = this.calculateDamage(4, 10);
+                    this.playerHealth -= damage;
+                    this.turns.unshift({
+                        isMonster: true,
+                        text: 'Monster hits Player for ' + damage + ' points.',
+                        id: this.id
+                    });
+                    if (this.playerHealth <= 0) {
+                        this.playerHealth = 0;
+                        alert("You lost. You were defeated by the beast!");
+                        this.gameIsRunning = false;
+                        return;
+                    }
+                },
+                specialplayerAttack: function () {
+                    this.id++
+                    var damage = this.calculateDamage(3, 10) + 5;
+                    this.monsterHealth -= damage;
+                    this.turns.unshift({
+                        isPlayer: true,
+                        text: 'Player hits Monster with a special attack for ' + damage + ' points.',
+                        id: this.id
+                    });
+                    if (this.monsterHealth <= 0) {
+                        this.monsterHealth = 0;
+                        alert("You won. You defeated the beast!");
+                        this.gameIsRunning = false;
+                        return;
+                    }
+                    setTimeout(this.specialmonsterAttack, 500);
+                },
+                specialmonsterAttack: function () {
+                    this.id++
+                    var damage = this.calculateDamage(4, 11) + 5;
+                    this.playerHealth -= damage;
+                    this.turns.unshift({
+                        isMonster: true,
+                        text: 'Monster hits Player with a special attack for ' + damage + ' points.',
+                        id: this.id
+                    });
+                    if (this.playerHealth <= 0) {
+                        this.playerHealth = 0;
+                        alert("You lost. You were defeated by the beast!");
+                        this.gameIsRunning = false;
+                        return;
+                    }
+                },
+                healplayer: function () {
+                    this.id++
+                    var health = this.calculateHealth(5, 15);
+                    this.playerHealth += health;
+                    if (this.playerHealth > 100) {
+                        this.playerHealth = 100;
+                    }
+                    else {
+                        this.turns.unshift({
+                            isPlayer: true,
+                            text: 'Player heals itself for ' + health + ' points.',
+                            id: this.id
+                        });
+                    }
+                    setTimeout(this.healmonster, 500)
+                },
+                healmonster: function () {
+                    this.id++
+                    var health = this.calculateHealth(5, 15);
+                    this.monsterHealth += health;
+                    if (this.monsterHealth > 100) {
+                        this.monsterHealth = 100;
+                    }
+                    else {
+                        this.turns.unshift({
+                            isMonster: true,
+                            text: 'Monster heals itself for ' + health + ' points.',
+                            id: this.id
+                        });
+                    }
+                },
+                giveUp: function () {
+                    this.playerHealth = 0;
+                    alert("You have given up. Better luck next time!");
+                    this.gameIsRunning = false;
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+
+</body>
+
+</html>

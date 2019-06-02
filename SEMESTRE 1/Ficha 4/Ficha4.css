@@ -1,0 +1,42 @@
+.container {
+    position: relative;
+}
+
+#nav {
+    position: absolute;
+    left: 0px;
+    width: 200px;
+    padding: 10px;
+}
+
+#section {
+/* position is static by default */
+    margin-left: 200px;
+    padding: 10px;
+    width:70%;
+}
+
+#footer {
+    position: fixed;
+    left:0;
+    height:70px;
+    background-color: white;
+    width: 685px;
+    padding: 10px;
+}
+
+body {
+    margin-bottom: 50px;
+    display: inline-block;
+    width: 40%;
+}
+
+div {
+padding: 10px; background-color: white; border: solid 1px #ccc;
+}
+
+.column {
+    display: inline-block;
+    vertical-align: top;
+    width: 75%;
+}

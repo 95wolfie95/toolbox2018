@@ -1,0 +1,36 @@
+.flexcontainer {
+    height: 500px;
+    background-color: white;
+    display: flex;
+    align-content: space-around;
+}
+
+.flexitem {
+    margin: 1px;
+    background-color: rgb(218, 218, 218);
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 95px;
+}
+
+.flexitem2 {
+    margin: 1px;
+    background-color: rgb(218, 218, 218);
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    line-height: 190px;
+}
+
+.order {
+    margin: 1px;
+    background-color: rgb(218, 218, 218);
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 95px;
+    align-self: auto;
+    order:-1;
+    flex-shrink: 10;
+}

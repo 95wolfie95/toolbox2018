@@ -1,0 +1,85 @@
+body {
+    background-color: #eee;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.flexwrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.flexItems
+{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    background-color: grey;
+    color: white;
+    font-size: 0.75rem;
+    min-height: 0.75rem;
+    justify-content: space-around;
+    padding: 0 1rem;
+}
+
+main {
+    flex-direction: row;
+    flex-flow: row wrap;
+    flex: 1;
+}
+
+.foco {
+    width: 100%;
+    background-color: white;
+}
+
+.ultimas {
+    flex: 2;
+}
+
+.agenda {
+    flex: 2;
+}
+
+.links {
+    flex: 1;
+}
+
+header {
+    flex: 1;
+    min-height: 10rem;
+    background-image: url("https://icdsst2019.files.wordpress.com/2017/04/university-madeira-banner25.jpg");
+    background-size: cover;
+}
+
+nav {
+    background-color: steelblue;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    min-height: 0.75rem;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.ListItem, .LastItem {
+    color: white;
+    text-decoration: none;
+}
+
+.ListItem {
+    margin-right: 1rem;
+}
+
+.LastItem {
+    margin-left: auto;
+}

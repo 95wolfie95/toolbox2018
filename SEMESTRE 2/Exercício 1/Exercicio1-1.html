@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercicio1-1</title>
+</head>
+
+<body>
+
+    <h1>Exercícios (1)</h1>
+    <hr>
+    <h2><b>Exercício 1 : Aprovado ou Reprovado</b></h2>
+
+    <form id="nota1">
+        Nota Teórica: <input name="name" type="text" style="width:15px;">
+    </form>
+
+    <form id="nota2">
+        Nota Prática: <input name="name" type="text" style="width:15px; margin-left: 3.5px;">
+    </form>
+
+    <button onclick="grader()" style="margin-top: 10px;">Calcular</button>
+    <button onclick="hide('demo1')" style="margin-top: 10px;">Ocultar</button>
+
+    <hr>
+    <p id="demo1"></p>
+    <hr>
+
+    <h2><b>Exercício 2 : Mês em extenso</b></h2>
+
+    <form id="mes">
+        Mês: <input name="name" type="text" style="width:15px;">
+    </form>
+
+    <button onclick="months()" style="margin-top: 10px;">Mostrar</button>
+    <button onclick="hide('demo2')" style="margin-top: 10px;">Ocultar</button>
+
+    <hr>
+    <p id="demo2"></p>
+    <hr>
+
+    <h2><b>Exercício 3 : 2 números e 1 operação</b></h2>
+
+    <form id="num1">
+        Número 1: <input name="name" type="text" style="width:15px;">
+    </form>
+    <form id="num2">
+        Número 2: <input name="name" type="text" style="width:15px;">
+    </form>
+
+    <button onclick="operations('+')" style="margin-top: 10px;width:30px;">+</button>
+    <button onclick="operations('-')" style="margin-top: 10px;width:30px;">-</button>
+    <button onclick="operations('*')" style="margin-top: 10px;width:30px;">*</button>
+    <button onclick="operations('/')" style="margin-top: 10px;width:30px;">/</button>
+    <button onclick="operations('^')" style="margin-top: 10px;width:30px;">^</button>
+    <button onclick="hide('demo3')" style="margin-top: 10px;">Ocultar</button>
+
+    <hr>
+    <p id="demo3"></p>
+    <hr>
+
+    <h2><b>Exercício 4 : Múltiplos de 5 menores que 20</b></h2>
+
+    <form id="multi"></form>
+
+    <button onclick="multiples()" style="margin-top: 10px;">Mostrar</button>
+    <button onclick="hide('demo4')" style="margin-top: 10px;">Ocultar</button>
+
+    <hr>
+    <p id="demo4"></p>
+    <hr>
+
+    <h2><b>Exercício 5 : Soma dos primeiros 100 números inteiros</b></h2>
+
+    <form id="somator"></form>
+
+    <button onclick="somatory()" style="margin-top: 10px;">Mostrar</button>
+    <button onclick="hide('demo5')" style="margin-top: 10px;">Ocultar</button>
+
+    <hr>
+    <p id="demo5"></p>
+    <hr>
+
+    <h2><b>Exercício 6 : Factorial de um número</b></h2>
+
+    <form id="factor">
+        Número escolhido: <input name="name" type="text" style="width:15px; margin-left: 3.5px;">
+    </form>
+
+    <button onclick="factorial()" style="margin-top: 10px;">Mostrar</button>
+    <button onclick="hide('demo6')" style="margin-top: 10px;">Ocultar</button>
+
+    <hr>
+    <p id="demo6"></p>
+    <hr>
+
+    <h2><b>Exercício 7 : Máximo, mínimo e média</b></h2>
+
+    <form id="maxminmed">
+        Sequência escolhida: ([ ]) <input name="name" type="text" style="width:75px; margin-left: 3.5px;">
+    </form>
+
+    <button onclick="max()" style="margin-top: 10px;">MAX</button>
+    <button onclick="min()" style="margin-top: 10px;">MIN</button>
+    <button onclick="med()" style="margin-top: 10px;">MED</button>
+    <button onclick="hide('demo7')" style="margin-top: 10px;">Ocultar</button>
+
+    <hr>
+    <p id="demo7"></p>
+    <hr>
+
+
+
+    <script>
+        function hide(id) {
+            document.getElementById(id).innerHTML = "";
+        }
+    </script>
+
+    <script>
+        function grader() {
+            var nota1 = Number(document.getElementById("nota1").elements["name"].value);
+            var nota2 = Number(document.getElementById("nota2").elements["name"].value);
+
+            document.getElementById("demo1").innerHTML = "Média final de " + (nota1 + nota2) / 2 + ", ou seja, "
+
+            if ((nota1 + nota2) / 2 >= 10) {
+                document.getElementById("demo1").innerHTML += "o aluno foi aprovado.";
+            } else {
+                document.getElementById("demo1").innerHTML += "o aluno foi reprovado.";
+            }
+        }
+    </script>
+
+    <script>
+        function months() {
+            var no = document.getElementById("mes").elements["name"].value;
+            var meses = {
+                1: "Janeiro", 2: "Fevereiro", 3: "Março", 4: "Abril", 5: "Maio", 6: "Junho",
+                7: "Julho", 8: "Agosto", 9: "Setembro", 10: "Outubro", 11: "Novembro", 12: "Dezembro"
+            };
+            return document.getElementById("demo2").innerHTML = meses[no];
+        }
+    </script>
+
+    <script>
+        function operations(op) {
+            var num1x = document.getElementById("num1").elements["name"].value;
+            var num2x = document.getElementById("num2").elements["name"].value;
+            var num1 = Number(num1x)
+            var num2 = Number(num2x)
+            operators = { "+": num1 + num2, "-": num1 - num2, "*": num1 * num2, "/": num1 / num2, "^": num1 ** num2 };
+            return document.getElementById("demo3").innerHTML = operators[op];
+        }
+    </script>
+
+    <script>
+        function multiples() {
+            var multip = [];
+            var i = 1;
+            while ((5 * i) < 20) {
+                multip.push(i);
+                i++;
+            }
+            return document.getElementById("demo4").innerHTML = "Números: " + multip;
+        }
+    </script>
+
+    <script>
+        function somatory() {
+            var resultado1 = 0;
+            var resultado2 = "";
+            for (i = 1; i <= 100; i++) {
+                resultado1 += i;
+                resultado2 += i + " ";
+            }
+            return document.getElementById("demo5").innerHTML = "<u>Números usados</u>: " + resultado2, document.getElementById("demo5").innerHTML += "<u><br>Soma total</u>: " + resultado1;
+        }
+    </script>
+
+    <script>
+        function factorial2(numero2) {
+            var rfinal = 1;
+            var numero = Number(numero2);
+            if (numero == 1) {
+                return 1;
+            }
+            else {
+                rfinal *= numero * factorial2(numero - 1);
+            }
+            return rfinal;
+        }
+
+        function factorial() {
+            var numero2 = document.getElementById("factor").elements["name"].value;
+            return document.getElementById("demo6").innerHTML = "Factorial de " + numero2 + ": " + factorial2(numero2);
+        }
+    </script>
+
+    <script>
+        function max() {
+            var lista = document.getElementById("maxminmed").elements["name"].value;
+            var maximo = lista[1];
+            for (i = 1; i < lista.length; i += 2) {
+                if (lista[i] > maximo) {
+                    maximo = lista[i];
+                }
+            }
+            return document.getElementById("demo7").innerHTML = "Máximo: " + maximo;
+        }
+
+        function min() {
+            var lista = document.getElementById("maxminmed").elements["name"].value;
+            var minimo = lista[1];
+            for (i = 1; i < lista.length; i += 2) {
+                if (lista[i] < minimo) {
+                    minimo = lista[i];
+                }
+            }
+            return document.getElementById("demo7").innerHTML = "Mínimo: " + minimo;
+        }
+
+        function med() {
+            var lista2 = document.getElementById("maxminmed").elements["name"].value;
+            var lista = [];
+            var numeros = 0;
+            for (i = 1; i < lista2.length; i += 2) {
+                lista += lista2[i];
+            }
+            for (i = 0; i < lista.length; i++) {
+                numeros += Number(lista[i]);
+            }
+            return document.getElementById("demo7").innerHTML = "Média: " + (numeros / lista.length);
+        }
+
+
+
+    </script>
+
+
+</body>
+
+</html>

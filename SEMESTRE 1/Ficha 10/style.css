@@ -1,0 +1,13 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    font-size:15px;
+}
+
+.row>div {
+    border: 0.5px solid gray;
+    padding: 10px;
+}
+
+span {
+    color: lightgray;
+}
